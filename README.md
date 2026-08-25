@@ -1,5 +1,7 @@
 # 🛡️ Secure Personal Gemini Journal
 
+![Personal Gemini Journal Showcase](./assets/gemini_journal_showcase.jpg)
+
 > **Deathon Challenge: Enterprise-Grade AI Reflection Workspace**  
 > *Built with Google AI Studio Directives, Gemini 2.5 Flash, Firebase Authentication, Cloud Firestore Isolation, and GCP Secret Manager.*
 
