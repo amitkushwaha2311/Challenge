@@ -1,0 +1,40 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Deny all unauthenticated or unmatched access by default (Principle of Least Privilege)
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Tenant Isolation: Users can ONLY access their own subcollections & documents
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+
+      // Journal Entries subcollection (isolated per user)
+      match /entries/{entryId} {
+        allow read, write, delete: if request.auth != null && request.auth.uid == userId;
+      }
+
+      // Brainstorming & AI Chat Sessions subcollection
+      match /chat_sessions/{sessionId} {
+        allow read, write, delete: if request.auth != null && request.auth.uid == userId;
+      }
+
+      // Cognitive Insights & Mood summaries
+      match /insights/{insightId} {
+        allow read, write, delete: if request.auth != null && request.auth.uid == userId;
+      }
+
+      // Life Knowledge Graph Nodes & Edges
+      match /life_graph/{nodeId} {
+        allow read, write, delete: if request.auth != null && request.auth.uid == userId;
+      }
+
+      // User Preferences & E2EE Vault Metadata (Public Key / Salt - no plaintext private keys)
+      match /preferences/{prefId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+    }
+  }
+}
