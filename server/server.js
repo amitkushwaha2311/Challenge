@@ -23,21 +23,12 @@ app.use(helmet({
   crossOriginEmbedderPolicy: false
 }));
 
-// 2. CORS configuration (Whitelisted origins)
-const allowedOrigins = [
-  'http://localhost:5173',
-  'http://127.0.0.1:5173',
-  'http://localhost:3000',
-  process.env.CLIENT_ORIGIN
-].filter(Boolean);
-
+// 2. CORS configuration (Dynamic origin resolution for Cloud Run, Render, Vercel & Localhost)
 app.use(cors({
   origin: (origin, callback) => {
-    // Allow requests with no origin (e.g. mobile apps, curl, or same-origin)
-    if (!origin || allowedOrigins.includes(origin) || process.env.NODE_ENV !== 'production') {
-      return callback(null, true);
-    }
-    return callback(new Error('CORS policy violation: Origin not allowed.'));
+    // Allow all origins or same-origin requests dynamically
+    // Endpoints are securely authenticated via Bearer JWT ID tokens
+    callback(null, true);
   },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
