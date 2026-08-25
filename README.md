@@ -1,9 +1,11 @@
 # 🛡️ Secure Personal Gemini Journal
 
+[![Run on Google Cloud](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run/?git_repo=https://github.com/amitkushwaha2311/Challenge.git)
+
 ![Personal Gemini Journal Showcase](./assets/gemini_journal_showcase.jpg)
 
 > **Deathon Challenge: Enterprise-Grade AI Reflection Workspace**  
-> *Built with Google AI Studio Directives, Gemini 2.5 Flash, Firebase Authentication, Cloud Firestore Isolation, and GCP Secret Manager.*
+> *Built with Google AI Studio Directives, Gemini 2.5 Flash, Firebase Authentication, Cloud Firestore Isolation, and GCP Secret Manager on Google Cloud Run.*
 
 ---
 

@@ -213,8 +213,23 @@ app.post('/api/graph/extract', authenticateToken, async (req, res) => {
   }
 });
 
+import path from 'path';
+
+// Serve frontend static assets in production / Cloud Run
+const distPath = path.join(process.cwd(), 'dist');
+app.use(express.static(distPath));
+
+// Fallback all non-API routes to index.html (SPA routing)
+app.get('*', (req, res, next) => {
+  if (req.path.startsWith('/api')) {
+    return next();
+  }
+  res.sendFile(path.join(distPath, 'index.html'));
+});
+
 // Start Express Server
-app.listen(PORT, () => {
-  console.log(`🛡️ Personal Gemini Journal Backend listening on port ${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`🛡️ Personal Gemini Journal running on port ${PORT}`);
   console.log(`🔒 Security: Zero-Trust Multi-Tenancy & Secret Manager active`);
 });
+

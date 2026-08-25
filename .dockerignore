@@ -1,0 +1,8 @@
+node_modules
+.env
+.env.local
+.git
+.gitignore
+dist
+.system_generated
+npm-debug.log
