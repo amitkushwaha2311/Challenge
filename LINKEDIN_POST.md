@@ -32,6 +32,7 @@ The Node.js/Express backend runs as a high-performance, containerized microservi
 4️⃣ AI Voice Journaling Companion (Web Speech API dictation)
 
 📂 GitHub Repository: https://github.com/amitkushwaha2311/Challenge
+🚀 1-Click Cloud Run Deploy: https://deploy.cloud.run/?git_repo=https://github.com/amitkushwaha2311/Challenge.git
 🔗 Profile: https://www.linkedin.com/in/amit-kushwaha-710690392
 
 #AccelerateAIwithCloudRun #GoogleCloud #Gemini #Firebase #CloudRun #AIStudio #CyberSecurity #WebDevelopment #DevSecOps #FullStack
